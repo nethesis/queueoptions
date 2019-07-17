@@ -388,26 +388,6 @@ if (isset($_REQUEST['id'])) {
     </div>
     <!--END VQ_DEST-->
 
-    <!--LazyMembers-->
-    <div class="row">
-        <div class="form-group">
-            <div class="col-md-4">
-                <label class="control-label" for="LazyMembers"><?php echo _("Lazy Members") ?></label>
-                <i class="fa fa-question-circle fpbx-help-icon" data-for="LazyMembers"></i>
-            </div>
-            <div class="col-md-7">
-                <input type="radio" name="LazyMembers" id="LazyMembersyes" value="1" <?php echo ($config['LazyMembers'])?"CHECKED":""?>>
-                <label for="LazyMembersyes"><?php echo _("Yes");?></label>
-                <input type="radio" name="LazyMembers" id="LazyMembersno" value="" <?php echo ($config['LazyMembers'])?"":"CHECKED"?>>
-                <label for="LazyMembersno"><?php echo _("No");?></label>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <span id="LazyMembers-help" class="help-block fpbx-help-block"><?php echo _('Enable Lazy Members')?></span>
-        </div>
-    </div>
-    <!--END LazyMembers-->
-
     <!--DEST-->
     <div class="row">
         <div class="form-group">
