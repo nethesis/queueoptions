@@ -332,6 +332,11 @@ class Queueoptions implements \BMO
                     $ext->add($context,$e,'',new \ext_set('VQ_MAXWAIT',$config['VQ_MAXWAIT']));
                 }
                 if ($config['VQ_DEST_ENABLED']) {
+                    // if VQ_DEST is queueexit, use queue number from DEST instead of ${EXTEN} which is always 's'
+                    if (strpos($config['VQ_DEST'],'queueexit-')===0 and strpos($config['DEST'],'ext-queues') === 0 ) {
+                        $queue_exten = preg_replace('/ext-queues,([0-9]+),[0-9]+/', '$1', $config['DEST']);
+                        $config['VQ_DEST'] = preg_replace('/queueexit-([0-9]+),\${EXTEN},/', 'queueexit-$1,'.$queue_exten.',',$config['VQ_DEST']);
+                    }
                     $ext->add($context,$e,'',new \ext_set('VQ_DEST',$config['VQ_DEST']));
                 }
                 $ext->add($context,$e,'',new \ext_goto($config['DEST']));
