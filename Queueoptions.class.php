@@ -302,6 +302,9 @@ class Queueoptions implements \BMO
                     $ext->add($context,$e,'',new \ext_set('VQ_CIDPP',$config['VQ_CIDPP']));
                 }
                 if (!empty($config['VQ_AINFO'])) {
+                    foreach (['\\','\\',':'] as $char) {
+                        $config['VQ_AINFO'] = str_replace($char,'\\'.$char,$config['VQ_AINFO']);
+                    }
                     $ext->add($context,$e,'',new \ext_set('VQ_AINFO',$config['VQ_AINFO']));
                 }
                 if (!empty($config['VQ_JOINMSG'])) {
