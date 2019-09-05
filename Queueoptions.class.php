@@ -96,13 +96,13 @@ class Queueoptions implements \BMO
             $VQ_MAXWAIT_ENABLED = $_REQUEST['VQ_MAXWAIT_ENABLED']?$_REQUEST['VQ_MAXWAIT_ENABLED']:0;
             $VQ_MAXWAIT = $_REQUEST['VQ_MAXWAIT']?$_REQUEST['VQ_MAXWAIT']:'';
             $VQ_DEST_ENABLED = $_REQUEST['VQ_DEST_ENABLED']?$_REQUEST['VQ_DEST_ENABLED']:0;
-            //Destinations
-            foreach (['VQ_DEST','DEST'] as $key) {
-                if (isset($_REQUEST['goto'.$key]) && isset($_REQUEST[$_REQUEST['goto'.$key].$key])) {
-                    $$key = $_REQUEST[$_REQUEST['goto'.$key].$key];
-                } else {
-                    $$key = '';
-                }
+            $DEST = $_REQUEST['DEST']?$_REQUEST['DEST']:'';
+            //Destination
+            $key = 'VQ_DEST';
+            if (isset($_REQUEST['goto'.$key]) && isset($_REQUEST[$_REQUEST['goto'.$key].$key])) {
+                $$key = $_REQUEST[$_REQUEST['goto'.$key].$key];
+            } else {
+                $$key = '';
             }
             //Handle form submissions
             switch ($action) {

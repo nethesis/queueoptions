@@ -396,7 +396,14 @@ if (isset($_REQUEST['id'])) {
                 <i class="fa fa-question-circle fpbx-help-icon" data-for="DEST"></i>
             </div>
             <div class="col-md-7">
-                <?php echo drawselects($config['DEST'],'DEST',false,false)?>
+                <select class="form-control" id="DEST" name="DEST">
+                <?php
+                    $queues = \FreePBX::Queues()->listQueues(false);
+                    foreach( $queues as $queue ) {?>
+                        <option value="<?php echo 'ext-queues,'.$queue[0].',1'?>" <?php echo ($config['DEST'] == 'ext-queues,'.$queue[0].',1') ? 'SELECTED': ''?>> <?php echo $queue[0].' - '. $queue[1]?></option>
+                    <?php } ?>
+                </select>
+
             </div>
         </div>
     </div>
